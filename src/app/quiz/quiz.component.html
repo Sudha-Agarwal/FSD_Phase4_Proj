@@ -1,0 +1,22 @@
+<!-- quiz.component.html -->
+
+<div class="quiz-container">
+    <h2>Online Quiz</h2>
+    <div class="questions">
+      <div *ngFor="let question of questions">
+        <p>{{ question.questionText }}</p>
+        <input type="text" [(ngModel)]="userAnswers[question.id]" 
+        placeholder="Enter your answer"  name="answers"
+         required>        
+        <div class="error-message" *ngIf="showResults && !userAnswers[question.id]">Answer is required</div>
+       <!-- Display result only after button click -->
+      <p *ngIf="showResults" [ngClass]="{'incorrect-answer': results[question.id] === 'incorrect'}">Result: {{ results[question.id] }}</p>
+       </div>
+    </div>
+    
+    <button (click)="submitAnswers()">Submit</button>
+
+  </div>
+
+
+  
